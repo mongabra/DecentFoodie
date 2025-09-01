@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DecentFoodie Design System - Food-themed colors and gradients */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background & Text */
+    --background: 45 15% 97%;
+    --foreground: 30 8% 15%;
 
+    /* Card Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 30 8% 15%;
 
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 30 8% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Warm Amber for appetite appeal */
+    --primary: 35 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 35 91% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Fresh Green for healthy vibes */
+    --secondary: 120 60% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones */
+    --muted: 45 15% 95%;
+    --muted-foreground: 30 8% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Rich Brown for premium feel */
+    --accent: 25 35% 40%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 120 60% 45%;
+    --warning: 45 91% 55%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border & Input */
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 35 91% 55%;
 
-    --radius: 0.5rem;
+    /* Layout */
+    --radius: 0.75rem;
+
+    /* Food-themed Gradients */
+    --gradient-breakfast: linear-gradient(135deg, hsl(45 91% 65%), hsl(35 91% 55%));
+    --gradient-lunch: linear-gradient(135deg, hsl(120 60% 55%), hsl(120 60% 45%));
+    --gradient-supper: linear-gradient(135deg, hsl(25 35% 50%), hsl(25 35% 40%));
+    --gradient-premium: linear-gradient(135deg, hsl(280 100% 70%), hsl(260 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(35 91% 55%), hsl(45 91% 65%));
+    
+    /* Shadows */
+    --shadow-warm: 0 4px 20px hsl(35 91% 55% / 0.15);
+    --shadow-elevated: 0 8px 30px hsl(30 8% 15% / 0.12);
+    --shadow-glow: 0 0 30px hsl(35 91% 55% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +83,44 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark theme with warm tones */
+    --background: 25 10% 8%;
+    --foreground: 45 15% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 25 10% 12%;
+    --card-foreground: 45 15% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 25 10% 12%;
+    --popover-foreground: 45 15% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 35 91% 55%;
+    --primary-foreground: 25 10% 8%;
+    --primary-glow: 35 91% 65%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 120 40% 40%;
+    --secondary-foreground: 45 15% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 25 10% 18%;
+    --muted-foreground: 30 8% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 25 35% 50%;
+    --accent-foreground: 45 15% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 15% 95%;
+    --success: 120 40% 40%;
+    --warning: 45 91% 55%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 25 10% 20%;
+    --input: 25 10% 20%;
+    --ring: 35 91% 55%;
+
+    /* Dark mode gradients */
+    --gradient-breakfast: linear-gradient(135deg, hsl(45 91% 65%), hsl(35 91% 55%));
+    --gradient-lunch: linear-gradient(135deg, hsl(120 40% 45%), hsl(120 40% 35%));
+    --gradient-supper: linear-gradient(135deg, hsl(25 35% 55%), hsl(25 35% 45%));
+    --gradient-premium: linear-gradient(135deg, hsl(280 100% 70%), hsl(260 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(35 91% 55%), hsl(45 91% 65%));
   }
 }
 
@@ -101,5 +131,71 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Food-themed gradient backgrounds */
+  .gradient-breakfast {
+    background: var(--gradient-breakfast);
+  }
+  
+  .gradient-lunch {
+    background: var(--gradient-lunch);
+  }
+  
+  .gradient-supper {
+    background: var(--gradient-supper);
+  }
+  
+  .gradient-premium {
+    background: var(--gradient-premium);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Custom shadows */
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Meal card styles */
+  .meal-card {
+    @apply rounded-2xl p-6 text-white backdrop-blur-sm transition-smooth hover:scale-105 hover:shadow-elevated cursor-pointer;
+  }
+  
+  .meal-card-breakfast {
+    @apply gradient-breakfast;
+  }
+  
+  .meal-card-lunch {
+    @apply gradient-lunch;
+  }
+  
+  .meal-card-supper {
+    @apply gradient-supper;
+  }
+  
+  .meal-card-premium {
+    @apply gradient-premium;
   }
 }
