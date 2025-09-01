@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Home, Calendar, BookOpen, Crown, User, LogOut } from "lucide-react";
+import { Home, Calendar, BookOpen, Crown, User, LogOut, LogIn } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Navigation = () => {
   const location = useLocation();
+  const { user, signOut, loading } = useAuth();
 
   const navItems = [
     { icon: Home, label: "Dashboard", path: "/" },
@@ -23,7 +25,7 @@ export const Navigation = () => {
         </div>
 
         <div className="hidden md:flex items-center space-x-1">
-          {navItems.map((item) => {
+          {user && navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
@@ -41,12 +43,27 @@ export const Navigation = () => {
         </div>
 
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon">
-            <User className="w-4 h-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <LogOut className="w-4 h-4" />
-          </Button>
+          {!loading && (
+            <>
+              {user ? (
+                <>
+                  <Button variant="ghost" size="icon" title={user.email}>
+                    <User className="w-4 h-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" onClick={signOut} title="Sign out">
+                    <LogOut className="w-4 h-4" />
+                  </Button>
+                </>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="default" className="flex items-center space-x-2">
+                    <LogIn className="w-4 h-4" />
+                    <span className="hidden sm:inline">Sign In</span>
+                  </Button>
+                </Link>
+              )}
+            </>
+          )}
         </div>
       </div>
     </nav>
