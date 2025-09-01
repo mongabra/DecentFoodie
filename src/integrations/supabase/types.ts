@@ -14,7 +14,109 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      meals: {
+        Row: {
+          day: string
+          id: string
+          is_premium: boolean | null
+          meal_type: string
+          title: string
+        }
+        Insert: {
+          day: string
+          id?: string
+          is_premium?: boolean | null
+          meal_type: string
+          title: string
+        }
+        Update: {
+          day?: string
+          id?: string
+          is_premium?: boolean | null
+          meal_type?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string | null
+          id: string
+          status: string | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          id?: string
+          status?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          id?: string
+          status?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recipes: {
+        Row: {
+          id: string
+          ingredients: string
+          instructions: string
+          meal_id: string | null
+        }
+        Insert: {
+          id?: string
+          ingredients: string
+          instructions: string
+          meal_id?: string | null
+        }
+        Update: {
+          id?: string
+          ingredients?: string
+          instructions?: string
+          meal_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recipes_meal_id_fkey"
+            columns: ["meal_id"]
+            isOneToOne: false
+            referencedRelation: "meals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
