@@ -8,7 +8,11 @@ DecentFoodie is a comprehensive meal-planning web application built for promotin
 
 
 **Pitch Deck**: 
-[https://decentfoodie-your-ultima-hkzowr6.gamma.site/]
+(https://decentfoodie-your-ultima-hkzowr6.gamma.site/)
+
+
+**Video Demo**
+https://github.com/mongabra/DecentFoodie/issues/1#issue-3375359544
 
 
 ## 🚀 Features
