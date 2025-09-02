@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+🍽️ DecentFoodie
 
-## Project info
+DecentFoodie is a simple meal-planning web app built for the Vibe-Coding Hackathon.
+It helps users access daily and weekly meal timetables while promoting SDG 2 (Zero Hunger) by encouraging healthy, consistent eating habits.
 
-**URL**: https://lovable.dev/projects/13db38dc-ccd3-4f1a-86fa-cc1ed4044f68
+Users can log in securely with Supabase Auth, view meals, and unlock premium weekly plans via IntaSend Payments.
 
-## How can I edit this code?
+🚀 Features
 
-There are several ways of editing your application.
+✅ User Authentication (Supabase)
 
-**Use Lovable**
+✅ Meal Timetable (Breakfast, Lunch, Dinner)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/13db38dc-ccd3-4f1a-86fa-cc1ed4044f68) and start prompting.
+✅ Payment Integration with IntaSend (unlock weekly plan)
 
-Changes made via Lovable will be committed automatically to this repo.
+✅ Deployed Frontend with Lovable
 
-**Use your preferred IDE**
+✅ Supabase Database for storing meals and users
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+🛠️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Frontend: Lovable
 
-Follow these steps:
+Backend / Database: Supabase
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Payments: IntaSend
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Deployment: Bolt.new
 
-# Step 3: Install the necessary dependencies.
-npm i
+📂 Database Schema (Supabase)
+meals
+Column	Type	Description
+id	int	Primary key
+name	text	Meal name
+type	text	breakfast / lunch / dinner
+day	text	e.g. Monday
+users
+Column	Type	Description
+id	uuid	Supabase Auth user id
+email	text	User email
+created_at	timestamptz	Signup date
+🔐 Authentication
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Users sign up or log in using Supabase Auth.
+
+After login, they can view meals directly linked to their account.
+
+💳 Payments with IntaSend
+
+Clicking “Unlock Weekly Plan” calls a Supabase Edge Function that initializes IntaSend Checkout.
+
+The user is redirected to IntaSend for payment.
+
+After successful payment, the user is redirected back to the app.
+
+📦 Installation (For Developers)
+# Clone repo
+git clone https://github.com/your-username/decentfoodie.git
+
+# Install dependencies
+npm install
+
+# Run locally
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+You’ll need to set these environment variables:
 
-**Use GitHub Codespaces**
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+INTASEND_SECRET_KEY=your_intasend_secret
+INTASEND_PUBLIC_KEY=your_intasend_public
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+🌍 SDG Impact
 
-## What technologies are used for this project?
+DecentFoodie directly supports SDG 2: Zero Hunger by:
 
-This project is built with:
+Promoting structured, balanced meals.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Offering affordable meal plans.
 
-## How can I deploy this project?
+Raising awareness of food planning and healthy eating.
 
-Simply open [Lovable](https://lovable.dev/projects/13db38dc-ccd3-4f1a-86fa-cc1ed4044f68) and click on Share -> Publish.
+👩‍💻 Contributors
 
-## Can I connect a custom domain to my Lovable project?
+Abraham Sitori — Hackathon Builder
 
-Yes, you can!
+AI Assistant (ChatGPT) — Coding Partner 🤝
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+📜 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is for educational and hackathon purposes. Feel free to fork and improve!
