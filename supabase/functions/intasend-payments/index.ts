@@ -58,7 +58,6 @@ serve(async (req) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-IntaSend-Public-Key-Test': Deno.env.get('INTASEND_PUBLISHABLE_KEY') ?? '',
           'Authorization': `Bearer ${Deno.env.get('INTASEND_SECRET_KEY') ?? ''}`,
         },
         body: JSON.stringify({

@@ -2,6 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Crown, Check, Star, Zap, Calendar, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { PaymentModal } from "@/components/PaymentModal";
+import { useState } from "react";
 
 const features = [
   {
@@ -27,6 +29,11 @@ const features = [
 ];
 
 const Premium = () => {
+  const [paymentModal, setPaymentModal] = useState({
+    isOpen: false,
+    checkoutUrl: '',
+    planName: ''
+  });
   const handlePayment = async (planType: 'premium' | 'family') => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
@@ -35,6 +42,18 @@ const Premium = () => {
         alert('Please sign in to upgrade your plan');
         return;
       }
+
+      // Show loading state
+      const planDetails = {
+        premium: { name: 'Premium Plan' },
+        family: { name: 'Family Plan' }
+      };
+
+      setPaymentModal({
+        isOpen: true,
+        checkoutUrl: '',
+        planName: planDetails[planType].name
+      });
 
       const response = await supabase.functions.invoke('intasend-payments', {
         body: { 
@@ -48,19 +67,32 @@ const Premium = () => {
 
       if (response.error) {
         console.error('Payment error:', response.error);
+        setPaymentModal(prev => ({ ...prev, isOpen: false }));
         alert('Payment failed. Please try again.');
         return;
       }
 
       const { checkout_url } = response.data;
       
-      // Open IntaSend checkout in new tab
-      window.open(checkout_url, '_blank');
+      // Update modal with checkout URL
+      setPaymentModal(prev => ({
+        ...prev,
+        checkoutUrl: checkout_url
+      }));
       
     } catch (error) {
       console.error('Payment error:', error);
+      setPaymentModal(prev => ({ ...prev, isOpen: false }));
       alert('Payment failed. Please try again.');
     }
+  };
+
+  const closePaymentModal = () => {
+    setPaymentModal({
+      isOpen: false,
+      checkoutUrl: '',
+      planName: ''
+    });
   };
 
   return (
@@ -219,6 +251,13 @@ const Premium = () => {
           Start Your Premium Journey
         </Button>
       </Card>
+
+      <PaymentModal
+        isOpen={paymentModal.isOpen}
+        onClose={closePaymentModal}
+        checkoutUrl={paymentModal.checkoutUrl}
+        planName={paymentModal.planName}
+      />
     </div>
   );
 };

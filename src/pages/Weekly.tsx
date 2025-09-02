@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MealCard } from "@/components/MealCard";
 import { Lock, Crown } from "lucide-react";
+import React from "react";
 
 const weeklyMeals = {
   Monday: {
@@ -86,11 +87,11 @@ const Weekly = () => {
 
           {/* Days */}
           {Object.entries(weeklyMeals).map(([day, meals]) => (
-            <>
-              <div key={`${day}-label`} className="font-semibold text-foreground py-4">
+            <React.Fragment key={day}>
+              <div className="font-semibold text-foreground py-4">
                 {day}
               </div>
-              <Card key={`${day}-breakfast`} className="p-4">
+              <Card className="p-4">
                 <div className="flex items-center justify-between">
                   <span className="font-medium">{meals.breakfast.title}</span>
                   {meals.breakfast.isLocked && (
@@ -98,7 +99,7 @@ const Weekly = () => {
                   )}
                 </div>
               </Card>
-              <Card key={`${day}-lunch`} className="p-4">
+              <Card className="p-4">
                 <div className="flex items-center justify-between">
                   <span className="font-medium">{meals.lunch.title}</span>
                   {meals.lunch.isLocked && (
@@ -106,7 +107,7 @@ const Weekly = () => {
                   )}
                 </div>
               </Card>
-              <Card key={`${day}-supper`} className="p-4">
+              <Card className="p-4">
                 <div className="flex items-center justify-between">
                   <span className="font-medium">{meals.supper.title}</span>
                   {meals.supper.isLocked && (
@@ -114,11 +115,11 @@ const Weekly = () => {
                   )}
                 </div>
               </Card>
-              <div key={`${day}-spacer1`}></div>
-              <div key={`${day}-spacer2`}></div>
-              <div key={`${day}-spacer3`}></div>
-              <div key={`${day}-spacer4`}></div>
-            </>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </React.Fragment>
           ))}
         </div>
       </div>
