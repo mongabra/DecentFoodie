@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Crown, Check, Star, Zap, Calendar, BookOpen } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const features = [
   {
@@ -26,10 +27,40 @@ const features = [
 ];
 
 const Premium = () => {
-  const handlePayment = async () => {
-    // This will be connected to IntaSend when backend is set up
-    console.log("Payment would be processed here with IntaSend");
-    alert("Payment integration coming soon! Connect Supabase first.");
+  const handlePayment = async (planType: 'premium' | 'family') => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        alert('Please sign in to upgrade your plan');
+        return;
+      }
+
+      const response = await supabase.functions.invoke('intasend-payments', {
+        body: { 
+          planType,
+          userEmail: session.user.email 
+        },
+        headers: {
+          Authorization: `Bearer ${session.access_token}`
+        }
+      });
+
+      if (response.error) {
+        console.error('Payment error:', response.error);
+        alert('Payment failed. Please try again.');
+        return;
+      }
+
+      const { checkout_url } = response.data;
+      
+      // Open IntaSend checkout in new tab
+      window.open(checkout_url, '_blank');
+      
+    } catch (error) {
+      console.error('Payment error:', error);
+      alert('Payment failed. Please try again.');
+    }
   };
 
   return (
@@ -111,7 +142,7 @@ const Premium = () => {
           <Button 
             variant="hero" 
             className="w-full shadow-glow" 
-            onClick={handlePayment}
+            onClick={() => handlePayment('premium')}
           >
             <Crown className="w-4 h-4 mr-2" />
             Upgrade to Premium
@@ -145,7 +176,13 @@ const Premium = () => {
             </li>
           </ul>
           
-          <Button variant="secondary" className="w-full">Choose Family</Button>
+          <Button 
+            variant="secondary" 
+            className="w-full"
+            onClick={() => handlePayment('family')}
+          >
+            Choose Family
+          </Button>
         </Card>
       </div>
 
@@ -177,7 +214,7 @@ const Premium = () => {
           variant="secondary" 
           size="lg" 
           className="bg-white/20 hover:bg-white/30 text-white border-0"
-          onClick={handlePayment}
+          onClick={() => handlePayment('premium')}
         >
           Start Your Premium Journey
         </Button>

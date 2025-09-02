@@ -43,21 +43,36 @@ export type Database = {
           amount: number
           created_at: string | null
           id: string
+          intasend_customer_id: string | null
+          intasend_invoice_id: string | null
+          next_billing_date: string | null
           status: string | null
+          subscription_status: string | null
+          subscription_type: string | null
           user_id: string | null
         }
         Insert: {
           amount: number
           created_at?: string | null
           id?: string
+          intasend_customer_id?: string | null
+          intasend_invoice_id?: string | null
+          next_billing_date?: string | null
           status?: string | null
+          subscription_status?: string | null
+          subscription_type?: string | null
           user_id?: string | null
         }
         Update: {
           amount?: number
           created_at?: string | null
           id?: string
+          intasend_customer_id?: string | null
+          intasend_invoice_id?: string | null
+          next_billing_date?: string | null
           status?: string | null
+          subscription_status?: string | null
+          subscription_type?: string | null
           user_id?: string | null
         }
         Relationships: [
