@@ -18,18 +18,18 @@ const todaysMeals = [
   },
   {
     type: "lunch" as const,
-    title: "Mediterranean Quinoa Salad",
-    description: "Quinoa with fresh vegetables and feta cheese",
-    prepTime: "25 min", 
-    servings: 3,
+    title: "Jollof Rice with Grilled Tilapia",
+    description: "Spiced rice with fresh fish and mixed vegetables",
+    prepTime: "45 min", 
+    servings: 4,
     isPremium: false
   },
   {
     type: "supper" as const,
-    title: "Herb-Crusted Salmon",
-    description: "Premium wild salmon with herbs and lemon",
-    prepTime: "35 min",
-    servings: 2,
+    title: "Ugali with Sukuma Wiki & Nyama Choma",
+    description: "Traditional cornmeal with collard greens and grilled meat",
+    prepTime: "50 min",
+    servings: 4,
     isPremium: true,
     isLocked: true
   }

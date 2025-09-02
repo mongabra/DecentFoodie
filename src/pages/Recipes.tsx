@@ -5,69 +5,69 @@ import { Clock, Users, ChefHat, Heart } from "lucide-react";
 const recipes = [
   {
     id: 1,
-    title: "Avocado Toast Bowl",
-    description: "Fresh avocado on sourdough with poached egg and cherry tomatoes",
+    title: "Mandazi with Chai",
+    description: "Sweet fried dough served with spiced tea",
     prepTime: "15 min",
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "2 slices sourdough bread",
-      "1 ripe avocado",
-      "2 eggs",
-      "1 cup cherry tomatoes",
-      "Salt and pepper to taste",
-      "Olive oil"
+      "2 cups all-purpose flour",
+      "1/2 cup coconut milk",
+      "2 tbsp sugar",
+      "1 tsp cardamom",
+      "Oil for frying",
+      "Tea leaves and spices"
     ],
     instructions: [
-      "Toast the sourdough bread until golden brown",
-      "Mash the avocado with salt and pepper", 
-      "Poach the eggs in simmering water",
-      "Halve the cherry tomatoes",
-      "Spread avocado on toast, top with egg and tomatoes",
-      "Drizzle with olive oil and serve"
+      "Mix flour, sugar, and cardamom",
+      "Add coconut milk to form dough", 
+      "Roll and cut into triangles",
+      "Deep fry until golden brown",
+      "Prepare spiced tea with cardamom and ginger",
+      "Serve mandazi warm with chai"
     ],
     isPremium: false
   },
   {
     id: 2,
-    title: "Mediterranean Quinoa Salad", 
-    description: "Protein-packed quinoa with fresh vegetables and feta cheese",
-    prepTime: "25 min",
-    servings: 3,
+    title: "Jollof Rice with Plantain", 
+    description: "West African spiced rice with sweet fried plantains",
+    prepTime: "40 min",
+    servings: 4,
     difficulty: "Medium",
     ingredients: [
-      "1 cup quinoa",
-      "1 cucumber, diced",
-      "1 cup cherry tomatoes",
-      "100g feta cheese",
-      "1/4 red onion",
-      "2 tbsp olive oil",
-      "1 lemon, juiced"
+      "2 cups jasmine rice",
+      "400g tomato paste",
+      "2 ripe plantains",
+      "1 onion, diced",
+      "2 bay leaves",
+      "Palm oil",
+      "Scotch bonnet pepper"
     ],
     instructions: [
-      "Cook quinoa according to package directions",
-      "Let quinoa cool completely",
-      "Dice cucumber, tomatoes, and onion",
-      "Crumble feta cheese",
-      "Mix all ingredients with olive oil and lemon",
-      "Season with salt and pepper"
+      "Sauté onions in palm oil until golden",
+      "Add tomato paste and spices",
+      "Add rice and stock, bring to boil",
+      "Simmer covered for 20 minutes",
+      "Fry plantains until caramelized",
+      "Serve jollof rice with fried plantains"
     ],
     isPremium: false
   },
   {
     id: 3,
-    title: "Herb-Crusted Salmon",
-    description: "Premium wild salmon with fresh herbs and lemon",
-    prepTime: "35 min", 
-    servings: 2,
+    title: "Ethiopian Doro Wat",
+    description: "Premium spiced chicken stew with injera bread",
+    prepTime: "90 min", 
+    servings: 6,
     difficulty: "Advanced",
     ingredients: [
-      "2 salmon fillets",
-      "Mixed fresh herbs",
-      "Breadcrumbs",
-      "Lemon zest",
-      "Garlic",
-      "Olive oil"
+      "Whole chicken pieces",
+      "Berbere spice blend",
+      "Red onions",
+      "Injera bread",
+      "Hard-boiled eggs",
+      "Ethiopian butter (niter kibbeh)"
     ],
     instructions: [
       "This is a premium recipe",

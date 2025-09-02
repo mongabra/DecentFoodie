@@ -7,38 +7,38 @@ import React from "react";
 const weeklyMeals = {
   Monday: {
     breakfast: { title: "Oatmeal Bowl", isPremium: false, isLocked: false },
-    lunch: { title: "Caesar Salad", isPremium: false, isLocked: false },
-    supper: { title: "Grilled Chicken", isPremium: true, isLocked: true }
+    lunch: { title: "Jollof Rice & Fish", isPremium: false, isLocked: false },
+    supper: { title: "Ugali & Sukuma Wiki", isPremium: true, isLocked: true }
   },
   Tuesday: {
     breakfast: { title: "Greek Yogurt", isPremium: false, isLocked: false },
-    lunch: { title: "Quinoa Bowl", isPremium: true, isLocked: true },
-    supper: { title: "Fish Tacos", isPremium: false, isLocked: false }
+    lunch: { title: "Thieboudienne", isPremium: true, isLocked: true },
+    supper: { title: "Injera with Doro Wat", isPremium: false, isLocked: false }
   },
   Wednesday: {
     breakfast: { title: "Smoothie Bowl", isPremium: true, isLocked: true },
-    lunch: { title: "Veggie Wrap", isPremium: false, isLocked: false },
-    supper: { title: "Pasta Primavera", isPremium: false, isLocked: false }
+    lunch: { title: "Fufu with Egusi Soup", isPremium: false, isLocked: false },
+    supper: { title: "Bobotie with Rice", isPremium: false, isLocked: false }
   },
   Thursday: {
     breakfast: { title: "Avocado Toast", isPremium: false, isLocked: false },
-    lunch: { title: "Buddha Bowl", isPremium: true, isLocked: true },
-    supper: { title: "Stir Fry", isPremium: false, isLocked: false }
+    lunch: { title: "Couscous with Tagine", isPremium: true, isLocked: true },
+    supper: { title: "Braai Platter", isPremium: false, isLocked: false }
   },
   Friday: {
     breakfast: { title: "Pancakes", isPremium: true, isLocked: true },
-    lunch: { title: "Soup & Salad", isPremium: false, isLocked: false },
-    supper: { title: "Pizza Night", isPremium: false, isLocked: false }
+    lunch: { title: "Bunny Chow", isPremium: false, isLocked: false },
+    supper: { title: "Potjiekos Stew", isPremium: false, isLocked: false }
   },
   Saturday: {
     breakfast: { title: "French Toast", isPremium: true, isLocked: true },
-    lunch: { title: "Sushi Bowl", isPremium: true, isLocked: true },
-    supper: { title: "BBQ Ribs", isPremium: true, isLocked: true }
+    lunch: { title: "Biltong & Pap", isPremium: true, isLocked: true },
+    supper: { title: "Moroccan Lamb Tagine", isPremium: true, isLocked: true }
   },
   Sunday: {
     breakfast: { title: "Brunch Spread", isPremium: true, isLocked: true },
-    lunch: { title: "Light Salad", isPremium: false, isLocked: false },
-    supper: { title: "Roast Dinner", isPremium: true, isLocked: true }
+    lunch: { title: "Chapati with Beans", isPremium: false, isLocked: false },
+    supper: { title: "Berbere Spiced Beef", isPremium: true, isLocked: true }
   }
 };
 
