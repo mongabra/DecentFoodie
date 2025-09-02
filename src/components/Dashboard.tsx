@@ -3,6 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, TrendingUp, Clock, Calendar } from "lucide-react";
 import heroFood from "@/assets/hero-food.jpg";
+import { PaymentModal } from "@/components/PaymentModal";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const todaysMeals = [
   {
@@ -33,6 +36,73 @@ const todaysMeals = [
 ];
 
 export const Dashboard = () => {
+  const [paymentModal, setPaymentModal] = useState({
+    isOpen: false,
+    checkoutUrl: '',
+    planName: ''
+  });
+
+  const handlePayment = async (planType: 'premium' | 'family') => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        alert('Please sign in to upgrade your plan');
+        return;
+      }
+
+      // Show loading state
+      const planDetails = {
+        premium: { name: 'Premium Plan' },
+        family: { name: 'Family Plan' }
+      };
+
+      setPaymentModal({
+        isOpen: true,
+        checkoutUrl: '',
+        planName: planDetails[planType].name
+      });
+
+      const response = await supabase.functions.invoke('intasend-payments', {
+        body: { 
+          planType,
+          userEmail: session.user.email 
+        },
+        headers: {
+          Authorization: `Bearer ${session.access_token}`
+        }
+      });
+
+      if (response.error) {
+        console.error('Payment error:', response.error);
+        setPaymentModal(prev => ({ ...prev, isOpen: false }));
+        alert('Payment failed. Please try again.');
+        return;
+      }
+
+      const { checkout_url } = response.data;
+      
+      // Update modal with checkout URL
+      setPaymentModal(prev => ({
+        ...prev,
+        checkoutUrl: checkout_url
+      }));
+      
+    } catch (error) {
+      console.error('Payment error:', error);
+      setPaymentModal(prev => ({ ...prev, isOpen: false }));
+      alert('Payment failed. Please try again.');
+    }
+  };
+
+  const closePaymentModal = () => {
+    setPaymentModal({
+      isOpen: false,
+      checkoutUrl: '',
+      planName: ''
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -138,11 +208,22 @@ export const Dashboard = () => {
             <p className="text-white/90 mb-4">
               Access exclusive recipes and advanced meal planning features
             </p>
-            <Button variant="secondary" className="bg-white/20 hover:bg-white/30 text-white border-0">
+            <Button 
+              variant="secondary" 
+              className="bg-white/20 hover:bg-white/30 text-white border-0"
+              onClick={() => handlePayment('premium')}
+            >
               Upgrade Now
             </Button>
           </Card>
         </div>
+
+        <PaymentModal
+          isOpen={paymentModal.isOpen}
+          onClose={closePaymentModal}
+          checkoutUrl={paymentModal.checkoutUrl}
+          planName={paymentModal.planName}
+        />
       </div>
     </div>
   );
