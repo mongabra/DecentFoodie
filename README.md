@@ -10,6 +10,11 @@ DecentFoodie is a comprehensive meal-planning web application built for promotin
 **Pitch Deck**: 
 [https://decentfoodie-your-ultima-hkzowr6.gamma.site/]
 
+
+**Video demo**
+"C:\Users\User\Desktop\DecentFoodie video.mp4"
+
+
 ## 🚀 Features
 
 ### ✅ Core Features
