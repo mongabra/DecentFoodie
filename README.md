@@ -5,7 +5,10 @@ DecentFoodie is a comprehensive meal-planning web application built for promotin
 ## 🌟 Live Demo
 
 **Frontend**: [https://mongabra-tasty-unloc-jpj5.bolt.host](https://mongabra-tasty-unloc-jpj5.bolt.host)
-**Pitch Deck**: [https://decentfoodie-your-ultima-hkzowr6.gamma.site/]
+
+
+**Pitch Deck**: 
+[https://decentfoodie-your-ultima-hkzowr6.gamma.site/]
 
 ## 🚀 Features
 
